@@ -42,6 +42,7 @@ class BaseDataset:
                 "tab": self.tab,
                 "opts": self.model._meta,
                 "action_form": action_form,
+                "has_action_form": bool(action_form),
                 "actions_selection_counter": True,
             },
         )

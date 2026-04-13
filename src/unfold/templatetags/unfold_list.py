@@ -468,11 +468,18 @@ def unfold_search_form_tag(parser, token):
     )
 
 
+def unfold_admin_actions(context):
+    context = admin_actions(context)
+    context.setdefault("action_form", "")
+    context.setdefault("actions_selection_counter", False)
+    return context
+
+
 @register.tag(name="unfold_admin_actions")
 def unfold_admin_actions_tag(parser, token):
     return InclusionAdminNode(
         parser,
         token,
-        func=admin_actions,
+        func=unfold_admin_actions,
         template_name="dataset_actions.html",
     )
